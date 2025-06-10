@@ -1,9 +1,10 @@
-import { Request, Response } from 'express';
+import express from 'express';
+const { Request, Response } = express;
 import { UserService } from '../services/UserService.js';
 
 export class UserController {
   // Get all users
-  static async getAllUsers(req: Request, res: Response): Promise<void> {
+  static async getAllUsers(req, res) {
     try {
       const users = await UserService.getAllUsers();
       res.status(200).json(users);
@@ -13,7 +14,7 @@ export class UserController {
   }
 
   // Get a user by ID
-  static async getUserById(req: Request, res: Response): Promise<void> {
+  static async getUserById(req, res) {
     try {
       const { id } = req.params;
       const user = await UserService.getUserById(id);
@@ -28,7 +29,7 @@ export class UserController {
   }
 
   // Create a new user
-  static async createUser(req: Request, res: Response): Promise<void> {
+  static async createUser(req, res) {
     try {
       const newUser = await UserService.createUser(req.body);
       res.status(201).json(newUser);
@@ -38,7 +39,7 @@ export class UserController {
   }
 
   // Update a user
-  static async updateUser(req: Request, res: Response): Promise<void> {
+  static async updateUser(req, res) {
     try {
       const { id } = req.params;
       const updatedUser = await UserService.updateUser(id, req.body);
@@ -53,7 +54,7 @@ export class UserController {
   }
 
   // Delete a user
-  static async deleteUser(req: Request, res: Response): Promise<void> {
+  static async deleteUser(req, res) {
     try {
       const { id } = req.params;
       const deletedUser = await UserService.deleteUser(id);

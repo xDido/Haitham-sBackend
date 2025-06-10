@@ -1,9 +1,10 @@
-import { Request, Response } from 'express';
+import express from 'express';
+const { Request, Response } = express;
 import { ProjectService } from '../services/ProjectService.js';
 
 export class ProjectController {
   // Get all projects
-  static async getAllProjects(req: Request, res: Response): Promise<void> {
+  static async getAllProjects(req, res) {
     try {
       const projects = await ProjectService.getAllProjects();
       res.status(200).json(projects);
@@ -13,7 +14,7 @@ export class ProjectController {
   }
 
   // Get a project by ID
-  static async getProjectById(req: Request, res: Response): Promise<void> {
+  static async getProjectById(req, res) {
     try {
       const { id } = req.params;
       const project = await ProjectService.getProjectById(id);
@@ -28,7 +29,7 @@ export class ProjectController {
   }
 
   // Create a new project
-  static async createProject(req: Request, res: Response): Promise<void> {
+  static async createProject(req, res) {
     try {
       const newProject = await ProjectService.createProject(req.body);
       res.status(201).json(newProject);
@@ -38,7 +39,7 @@ export class ProjectController {
   }
 
   // Update an existing project
-  static async updateProject(req: Request, res: Response): Promise<void> {
+  static async updateProject(req, res) {
     try {
       const { id } = req.params;
       const updatedProject = await ProjectService.updateProject(id, req.body);
@@ -53,7 +54,7 @@ export class ProjectController {
   }
 
   // Delete a project
-  static async deleteProject(req: Request, res: Response): Promise<void> {
+  static async deleteProject(req, res) {
     try {
       const { id } = req.params;
       const deletedProject = await ProjectService.deleteProject(id);

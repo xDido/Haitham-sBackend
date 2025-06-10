@@ -1,4 +1,5 @@
-import express, { Express, Request, Response } from 'express';
+import express from 'express';
+const { Request, Response } = express;
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import blogPostRoutes from './routes/BlogPostRoutes.js'; // Adjusted path
@@ -7,7 +8,7 @@ import projectRoutes from './routes/ProjectRoutes.js';
 
 dotenv.config();
 
-const index: Express = express();
+const index = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
@@ -29,7 +30,7 @@ mongoose.connect(mongoUri)
   });
 
 // Routes
-index.get('/', (req: Request, res: Response) => {
+index.get('/', (req, res) => {
   res.send('Express + TypeScript Server');
 });
 
