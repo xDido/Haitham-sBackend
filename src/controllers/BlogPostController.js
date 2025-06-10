@@ -1,8 +1,9 @@
-import { Request, Response } from 'express';
+import express from 'express';
+const { Request, Response } = express;
 import { BlogPostService } from '../services/BlogPostService.js';
 
 export class BlogPostController {
-  static async getAllBlogPosts(req: Request, res: Response): Promise<void> {
+  static async getAllBlogPosts(req, res) {
     try {
       const posts = await BlogPostService.getAllBlogPosts();
       res.status(200).json(posts);
@@ -11,7 +12,7 @@ export class BlogPostController {
     }
   }
 
-  static async getBlogPostById(req: Request, res: Response): Promise<void> {
+  static async getBlogPostById(req, res) {
     try {
       const { id } = req.params;
       const post = await BlogPostService.getBlogPostById(id);
@@ -25,7 +26,7 @@ export class BlogPostController {
     }
   }
 
-  static async createBlogPost(req: Request, res: Response): Promise<void> {
+  static async createBlogPost(req, res) {
     try {
       const newPost = await BlogPostService.createBlogPost(req.body);
       res.status(201).json(newPost);
@@ -34,7 +35,7 @@ export class BlogPostController {
     }
   }
 
-  static async updateBlogPost(req: Request, res: Response): Promise<void> {
+  static async updateBlogPost(req, res) {
     try {
       const { id } = req.params;
       const updatedPost = await BlogPostService.updateBlogPost(id, req.body);
@@ -48,7 +49,7 @@ export class BlogPostController {
     }
   }
 
-  static async deleteBlogPost(req: Request, res: Response): Promise<void> {
+  static async deleteBlogPost(req, res) {
     try {
       const { id } = req.params;
       const deletedPost = await BlogPostService.deleteBlogPost(id);

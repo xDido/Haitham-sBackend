@@ -10,17 +10,11 @@
     "mongoose": "^8.15.1"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.2",
-    "@types/express": "^5.0.3",
-    "@types/node": "^24.0.0",
-    "nodemon": "^3.1.10",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "nodemon": "^3.1.10"
   },
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "dev:backend": "nodemon --watch src --exec ts-node src/index.ts",
-    "build:backend": "tsc -p .",
-    "start:backend": "node dist/index.js"
+    "start": "node src/index.js",
+    "dev:backend": "nodemon --watch src --exec node src/index.js",
+    "start:backend": "node src/index.js"
   }
 }

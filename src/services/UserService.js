@@ -1,20 +1,20 @@
 import { User } from '../models/User.js'; // Mongoose User model
-import { IUser } from '../models/User.js'; // Interface for type safety
+// Interface for type safety
 import bcrypt from 'bcrypt';
 
 export class UserService {
   // Fetch all users
-  static async getAllUsers(): Promise<IUser[]> {
+  static async getAllUsers() {
     return User.find();
   }
 
   // Fetch a user by ID
-  static async getUserById(id: string): Promise<IUser | null> {
+  static async getUserById(id) {
     return User.findById(id);
   }
 
   // Create a new user
-static async createUser(userData: Partial<IUser>): Promise<IUser> {
+static async createUser(userData) {
   // Ensure password is provided and is a string
   if (!userData.password || false) {
     throw new Error('Password is required and must be a string.');
@@ -36,12 +36,12 @@ static async createUser(userData: Partial<IUser>): Promise<IUser> {
 
 
   // Update a user by ID
-  static async updateUser(id: string, updatedData: Partial<IUser>): Promise<IUser | null> {
+  static async updateUser(id, updatedData) {
     return User.findByIdAndUpdate(id, updatedData, { new: true });
   }
 
   // Delete a user by ID
-  static async deleteUser(id: string): Promise<IUser | null> {
+  static async deleteUser(id) {
     return User.findByIdAndDelete(id);
   }
 }
