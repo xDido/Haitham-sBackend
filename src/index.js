@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import blogPostRoutes from './routes/BlogPostRoutes.js'; // Adjusted path
 import userRoutes from './routes/UserRoutes.js';
 import projectRoutes from './routes/ProjectRoutes.js';
-
+import emailRoutes from './routes/EmailRoutes.js';
 dotenv.config();
 
 const index = express();
@@ -34,6 +34,8 @@ index.get('/', (req, res) => {
   res.send('Express + TypeScript Server');
 });
 
+
+index.use('/api/emails', emailRoutes);
 index.use('/api/blogposts', blogPostRoutes); // Using BlogPostRoutes
 index.use('/api/users', userRoutes);
 index.use('/api/projects', projectRoutes);
